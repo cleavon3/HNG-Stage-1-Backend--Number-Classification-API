@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Query, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 import requests
 
 app = FastAPI()
@@ -57,9 +58,6 @@ def classify_number(number: int = Query (..., description="the number to classif
         "fun_fact": get_fun_fact(number),
     }
 
-
-class CORSMiddleware:
-    pass
 
 
 app.add_middleware(
