@@ -34,16 +34,16 @@ def get_fun_fact(n: int) -> str:
     response = requests.get(url)
     return response.text
 
-@app.get("/api/classify-num")
-def classify_number(number: int = Query (..., description="the number to classify")):
+@app.get("/api/classify-number")
+def classify_number(number: int = Query(..., description="the number to classify")):
     try:
         number = int(number)
     except ValueError:
-        return {number: str(number), "error": True}
+        return {"number": str(number), "error": True}
 
     properties = []
     if is_Armstrong(number):
-        properties.append("armstrong")
+        properties.append("Armstrong")
     if number % 2 == 0:
         properties.append("even")
     else:
